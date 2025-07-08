@@ -23,8 +23,9 @@ public class Mathematics {
         //System.out.println(Arrays.deepToString(s2.x));
         System.out.println(x2);
         System.out.println(s2.rows);*/
-        Matrix k= s1.multiply(s2);
-        String o=transform.printx();
+        Matrix k= s4.scalar(4);
+        String o=k.printx();
+        System.out.println(s4.printx());
         System.out.println(o);
 
     }   

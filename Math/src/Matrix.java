@@ -21,6 +21,8 @@ public class Matrix {
         x=l;
     }
 
+    //add matrix argument method constructor
+
     public String printx(){
         String s="[";
         for(int i=0;i<rows-1;i++){
@@ -92,7 +94,7 @@ public class Matrix {
     }
 
     public Matrix t2(int r, double a){
-        r-=1;
+
         Matrix tm=new Matrix(this.x);
         for(int i=0;i<this.cols;i++){
                tm.x[r][i]=tm.x[r][i]*a;
@@ -118,14 +120,14 @@ public class Matrix {
         return x;
     }
 
-    private Matrix scalarmult(double a){
+    //return a new matrix with scalar multiplier
+    public Matrix scalar(double a){
         Matrix n=new Matrix(x);
         for(int i=0;i<this.rows;i++){
-            for(int j=0;j<this.cols;j++){
-               n.x[i][j]*=a;
-            }
+            n=n.t2(i,a);
         }
         return n;
     }
+
 
 }
