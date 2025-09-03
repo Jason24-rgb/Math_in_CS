@@ -13,15 +13,32 @@ public class Matrix {
         rows=n;
         cols=m;
         totlel=m*n;
+
     }
     
     Matrix(double[][] l){
-        rows=l.length;
-        cols=l[0].length;
-        x=l;
+        setup(l);
+
     }
 
-    //add matrix argument method constructor
+    Matrix(Matrix m){
+        setup(m.x);
+    }
+
+    private void setup(double[][] l){
+        rows=l.length;
+        cols=l[0].length;
+        this.x=new double[rows][cols];
+        for (int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                this.x[i][j]=l[i][j];
+            }
+        }
+        trans=new double[cols][rows];
+        totlel=rows*cols;
+        transpose();
+
+    }
 
     public String printx(){
         String s="[";
@@ -33,11 +50,21 @@ public class Matrix {
         return s;
     }
 
+    public String printTrans(){
+        String s="[";
+        for(int i=0;i<cols-1;i++){
+            s+=Arrays.toString(trans[i])+",\n";
+        }
+        s+=Arrays.toString(trans[cols-1]);
+        s=s+"]";
+        return s;
+    }
+    
     public void assign(double[] ls){      
         int r=0;
         int c=0;
         if (ls.length>totlel){
-            System.out.println("total numbers has to be less thatn or equal to matrix length");
+            System.out.println("total numbers has to be less than or equal to matrix length");
             return;
         }
         
@@ -48,6 +75,7 @@ public class Matrix {
             trans[c][r]=ls[i];
 
         }
+
 
     }
 
@@ -76,9 +104,6 @@ public class Matrix {
             }
         }*/
         
-
-
-
         return k;
     }
 
@@ -130,4 +155,12 @@ public class Matrix {
     }
 
 
+    //transpose matrix
+    private void transpose(){
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                trans[j][i]=x[i][j];
+            }
+        }
+    }
 }

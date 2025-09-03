@@ -14,7 +14,8 @@ public class Mathematics {
         s1.assign(list);
         s2.assign(ls2);
         s4.assign(ls4);
-        Matrix transform= s4.t1(1,4);
+        //s4.transpose
+        //Matrix transform= s4.t1(1,4);
         /*String x3=s3.printx();
         String x1=s1.printx();
         String x2=s2.printx();
@@ -24,10 +25,15 @@ public class Mathematics {
         System.out.println(x2);
         System.out.println(s2.rows);*/
         Matrix k= s4.scalar(4);
-        String o=k.printx();
-        System.out.println(s4.printx());
+        Matrix s5=new Matrix(s4.x);
+        String p=s4.printTrans();
+        System.out.println(p);
+        String o=s4.printx();
         System.out.println(o);
+        //System.out.println(s4.printx());
+       // System.out.println(o);
 
+       //organize tests next time
     }   
     
 
