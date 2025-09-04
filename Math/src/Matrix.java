@@ -29,16 +29,14 @@ public class Matrix {
         rows=l.length;
         cols=l[0].length;
         this.x=new double[rows][cols];
-        for (int i=0;i<rows;i++){
-            for(int j=0;j<cols;j++){
-                this.x[i][j]=l[i][j];
-            }
-        }
+        x=deepcopy(l);
         trans=new double[cols][rows];
         totlel=rows*cols;
         transpose();
 
     }
+
+
 
     public String printx(){
         String s="[";
@@ -110,11 +108,14 @@ public class Matrix {
     public Matrix t1(int r1, int r2){
         r1-=1;
         r2-=1;
-        double[][] a=this.x;
-        double[] temp=a[r1];
-        a[r1]=a[r2];
-        a[r2]=temp;
-        Matrix tm=new Matrix(a);
+        Matrix tm=new Matrix(this.x);
+        //maybe deepcopy not necessary
+            //double[][] a=new double[rows][cols];
+            //a=deepcopy(this.x);
+        double[] temp=tm.x[r1];
+        tm.x[r1]=tm.x[r2];
+        tm.x[r2]=temp;
+            //Matrix tm=new Matrix(a);
         return tm;
     }
 
@@ -127,7 +128,7 @@ public class Matrix {
         return tm;
     }
 
-    public Matrix t3(int r1, double a, int r2){
+    public Matrix t3(int r1, int r2, double a){
         r1-=1;
         r2-=1;
         Matrix tm=new Matrix(this.x);
@@ -153,8 +154,7 @@ public class Matrix {
         }
         return n;
     }
-
-
+   
     //transpose matrix
     private void transpose(){
         for(int i=0;i<rows;i++){
@@ -162,5 +162,15 @@ public class Matrix {
                 trans[j][i]=x[i][j];
             }
         }
+    }
+
+    private double[][] deepcopy(double[][] l){
+        double[][] copy=new double[l.length][l[0].length];
+        for (int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                copy[i][j]=l[i][j];
+            }
+        }
+        return copy;
     }
 }
