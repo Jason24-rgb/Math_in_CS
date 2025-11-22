@@ -1,8 +1,23 @@
 import java.util.Arrays;
- import java.util.Scanner;
+import java.util.Scanner;
 
 public class Mathematics {
+    private String setting; //can either be set to probability, calculus, or Linear algerba, still have yet to add 3d and probability
+    
+    public Mathematics(String choice){
+        setting=choice;
+    }
+    public void commands(){
+
+        if(setting.equals("Lin Alg")){
+            //get commands for lin alg syntax will add file for that later, maybe in like a year
+        }
+
+    }
+
     public static void main(String[] args) throws Exception {
+        
+        
         System.out.println("Hello, World!");
         Matrix s1=new Matrix(2, 2);
         double[] list={3,1,5,2}; //9.0,10.0,11,12,13,14,15,16
@@ -46,7 +61,7 @@ public class Mathematics {
         int op = scan.nextInt();
         
         if (op==1){
-            System.out.println("enter rows");
+            System.out.println("Swap rows, rule no.1\n"+"enter rows");
             int r1=scan.nextInt();
             int r2=scan.nextInt();
             Matrix m1=s4.t1(r1, r2);
@@ -54,7 +69,7 @@ public class Mathematics {
             System.out.println(o);
         }
         if (op==2){
-            System.out.println("enter row");
+            System.out.println("scale a row, rule no. 2\n"+"enter row");
             int r1=scan.nextInt();
             System.out.println("enter scalar");
             double sc=scan.nextDouble();
@@ -63,7 +78,7 @@ public class Mathematics {
             System.out.println(o);
         }
         if (op==3){
-            System.out.println("enter row to change");
+            System.out.println("add scaled row to other row, rule no. 3\n"+"enter row to change");
             int r1=scan.nextInt();
             System.out.println("enter row to add from");
             int r2=scan.nextInt();
@@ -74,8 +89,9 @@ public class Mathematics {
             System.out.println(o);
         }
         if (op==4){
+            System.out.println("transpose given matrix");
             Matrix m1=new Matrix(s4.trans);
-            o=s4.printTrans();
+            o=m1.printTrans();
             System.out.println(o);
         }
 

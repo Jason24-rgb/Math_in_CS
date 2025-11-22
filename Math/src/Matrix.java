@@ -120,8 +120,8 @@ public class Matrix {
     }
 
     public Matrix t2(int r, double a){
-
         Matrix tm=new Matrix(this.x);
+        
         for(int i=0;i<this.cols;i++){
                tm.x[r][i]=tm.x[r][i]*a;
             }
